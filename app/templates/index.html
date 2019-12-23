@@ -1,5 +1,20 @@
-<ul>
-  {%for st in students %}
-    <li>{{st.name}}</li>
-  {% endfor %}
-</ul>
+<table border="1">
+  <tr>
+    <th>STT</th>
+    <th>Mã học sinh</th>
+    <th>Họ tên</th>
+    <th>Chức năng</th>
+  </tr>
+  {% for st in students %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ st.studentNo }}</td>
+    <td>{{ st.name }}</td>
+    <td>
+      <a href="/update_student/{{st.id}}">Chỉnh sửa</a>
+      <a href="{% url 'delete-student' st.id %}">Xóa</a>
+    </td>
+  </tr> 
+  {% endfor %} 
+</table>
+<a href='{% url "create-student" %}'>Thêm mới học sinh</a>

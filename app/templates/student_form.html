@@ -1,0 +1,5 @@
+<form method="POST"> {%csrf_token%}
+    Mã học sinh: <input value="{{ studentNo }}"  name="studentNo"> <br>
+    Tên: <input value="{{ name }}" name="name"> <br>
+    <button type="submit">Lưu lại</button>
+</form>
