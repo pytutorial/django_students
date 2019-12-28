@@ -1,20 +1,27 @@
-<table border="1">
-  <tr>
-    <th>STT</th>
-    <th>Mã học sinh</th>
-    <th>Họ tên</th>
-    <th>Chức năng</th>
-  </tr>
-  {% for st in students %}
-  <tr>
-    <td>{{ forloop.counter }}</td>
-    <td>{{ st.studentNo }}</td>
-    <td>{{ st.name }}</td>
-    <td>
-      <a href="/update_student/{{st.id}}">Chỉnh sửa</a>
-      <a href="{% url 'delete-student' st.id %}">Xóa</a>
-    </td>
-  </tr> 
-  {% endfor %} 
-</table>
-<a href='{% url "create-student" %}'>Thêm mới học sinh</a>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<div class="container mt-3">
+  <table class="table table-bordered">
+    <tr class="text-center">
+      <th>STT</th>
+      <th>Mã học sinh</th>
+      <th>Họ tên</th>
+      <th>Ảnh đại diện</th>
+      <th>Chức năng</th>
+    </tr>
+    {% for st in students %}
+    <tr class="text-center">
+      <td>{{ forloop.counter }}</td>
+      <td>{{ st.studentNo }}</td>
+      <td>{{ st.name }}</td>
+      <td>
+        <img src="/static/{{ st.studentNo }}.jpg?time={{time}}" style="max-height:200px;">
+      </td>
+      <td>
+        <a class="btn btn-sm btn-primary" href="/update_student/{{st.id}}">Chỉnh sửa</a>
+        <a class="btn btn-sm btn-danger" href="{% url 'delete-student' st.id %}">Xóa</a class="btn btn-sm btn-primary">
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <a class="btn btn-primary" href='{% url "create-student" %}'>Thêm mới học sinh</a>
+</div>
